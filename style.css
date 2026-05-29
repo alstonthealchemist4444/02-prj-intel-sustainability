@@ -118,6 +118,8 @@ main {
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE/Edge */
   flex: 1;
+  /* LevelUp: Scroll Snap — locks each card into place when scrolling */
+  scroll-snap-type: x mandatory;
 }
 
 .carousel::-webkit-scrollbar {
@@ -132,8 +134,11 @@ main {
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   border: 1px solid #e2e8f0;
+  /* LevelUp: CSS Transforms + Transitions — smooth hover lift and shadow */
   transition: transform 0.28s ease, box-shadow 0.28s ease;
   cursor: default;
+  /* LevelUp: Scroll Snap alignment */
+  scroll-snap-align: start;
 }
 
 .card:hover {
@@ -211,8 +216,11 @@ main {
   width: calc(100% - 3rem);
 }
 
-/* ----- Responsive: mobile (max 600px) ----- */
-@media (max-width: 600px) {
+/* ============================================================
+   Responsive: mobile (max 700px)
+   Per rubric: milestones stack vertically on smaller screens
+   ============================================================ */
+@media (max-width: 700px) {
   .hero h1 {
     font-size: 1.4rem;
   }
@@ -221,18 +229,38 @@ main {
     font-size: 0.95rem;
   }
 
+  /* Hide carousel arrows on mobile — vertical scroll uses the page itself */
   .carousel-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
-    margin: 0 0.4rem;
+    display: none;
   }
 
+  /* Stack the wrapper as a column */
+  .carousel-wrapper {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  /* Switch carousel from horizontal scroll to vertical stack */
+  .carousel {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: visible;
+    gap: 1.25rem;
+    padding: 0.5rem 0;
+    /* Disable horizontal scroll snap when stacked vertically */
+    scroll-snap-type: none;
+  }
+
+  /* Cards become full-width blocks */
   .card {
-    flex: 0 0 240px;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    scroll-snap-align: none;
   }
 
   .card img {
-    height: 130px;
+    height: 180px;
   }
 }
