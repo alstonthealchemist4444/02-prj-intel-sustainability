@@ -23,7 +23,7 @@ img {
 /* Timeline card images: make them fill the card width and never overflow */
 .card img {
 	width: 100%;
-	height: auto;
+	height: 180px;
 	display: block;
 	object-fit: cover;
 }
@@ -83,6 +83,11 @@ header .hero {
 .card {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	scroll-margin-top: 80px;
+	background-color: #ffffff;
+	border: 1px solid #e5e5e5;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .card:hover {
@@ -98,6 +103,22 @@ header .hero {
 
 .card:hover .detail {
 	opacity: 1;
+}
+
+/* Card text padding */
+.card h2,
+.card h3,
+.card p {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.card h2 {
+	margin-top: 1rem;
+}
+
+.card p:last-child {
+	margin-bottom: 1rem;
 }
 
 /* Timeline layout: flex container for card arrangement */
