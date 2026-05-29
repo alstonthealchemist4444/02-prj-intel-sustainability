@@ -1,168 +1,226 @@
-/* Add your CSS here */
+/* ============================================================
+   Intel Sustainability – style.css
+   ============================================================ */
 
-/* Smooth scrolling behavior */
+/* ----- Smooth scrolling ----- */
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-/* Center main content and constrain max width on wide screens */
+/* ----- Reset & base ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 0 1rem;
-	box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #f0f4f8;
 }
 
-/* Make images responsive so they fit the constrained layout */
 img {
-	max-width: 100%;
-	height: auto;
-	display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Timeline card images: make them fill the card width and never overflow */
-.card img {
-	width: 100%;
-	height: 180px;
-	display: block;
-	object-fit: cover;
+/* ----- Header / hero ----- */
+header {
+  background: linear-gradient(135deg, #0071c5 0%, #004a99 100%);
+  color: #ffffff;
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
 }
 
-/* Header/hero logo: constrain size and center it */
-header .hero img {
-	max-width: 220px;
-	width: 100%;
-	height: auto;
-	display: block;
-	margin: 0 auto 1rem;
+.hero img {
+  /* The Intel SVG logo — keep it a reasonable size and blend cleanly */
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+  /* Transparent background so it integrates with the blue header */
+  background: transparent;
 }
 
-/* Ensure hero content is centered */
-header .hero {
-	text-align: center;
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
 }
 
-/* Small polish: center the timeline note */
-.timeline-note {
-	text-align: center;
-	margin: 2.5rem 0 1.5rem 0;
-	padding: 1.25rem;
-	background-color: #f5f5f5;
-	border-radius: 8px;
-	color: #555;
-	font-size: 0.95rem;
-	line-height: 1.5;
+.hero p {
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
 }
-/* Sticky navigation bar */
+
+/* ----- Sticky navigation bar ----- */
 .timeline-nav {
-	position: sticky;
-	top: 0;
-	z-index: 100;
-	width: 100%;
-	background-color: white;
-	padding: 0.75rem 1rem;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 2px solid #0071c5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-nav a {
-	text-decoration: none;
-	color: #333;
-	padding: 0.5rem 0.75rem;
-	transition: color 0.2s ease;
-	font-weight: 500;
+  text-decoration: none;
+  color: #333333;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .timeline-nav a:hover {
-	color: #0071c5;
+  background-color: #0071c5;
+  color: #ffffff;
 }
-/* Timeline card hover effect: subtle lift and shadow */
+
+/* ----- Main content wrapper ----- */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* ----- Timeline grid ----- */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  justify-content: center;
+}
+
+/* ----- Individual cards ----- */
 .card {
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	scroll-margin-top: 80px;
-	background-color: #ffffff;
-	border: 1px solid #e5e5e5;
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  flex: 1 1 300px;
+  max-width: 360px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;           /* keeps image corners clipped by border-radius */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  scroll-margin-top: 80px;   /* offset for sticky nav when jumped to */
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
-/* De-emphasize the sustainability detail paragraph, brighten on hover */
-.card .detail {
-	opacity: 0.65;
-	transition: opacity 0.3s ease;
+/* Card image: fixed height so all images crop uniformly */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
 }
 
-.card:hover .detail {
-	opacity: 1;
+/* Card text area */
+.card-body {
+  padding: 1.25rem 1.25rem 1.5rem;
 }
 
-/* Card text padding */
-.card h2,
-.card h3,
-.card p {
-	margin-left: 1rem;
-	margin-right: 1rem;
+.card-body h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0071c5;
+  margin-bottom: 0.15rem;
 }
 
-.card h2 {
-	margin-top: 1rem;
+.card-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.card p:last-child {
-	margin-bottom: 1rem;
+.card-body p {
+  font-size: 0.93rem;
+  color: #444444;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
 }
 
-/* Timeline layout: flex container for card arrangement */
-.timeline {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1.5rem;
-	justify-content: center;
+/* Detail (sustainability connection) paragraph — dimmed by default */
+.card-body .detail {
+  opacity: 0.6;
+  font-style: italic;
+  margin-bottom: 0;
+  transition: opacity 0.28s ease;
 }
 
-.card {
-	flex: 1 1 calc(33.333% - 1rem);
-	min-width: 280px;
+.card:hover .card-body .detail {
+  opacity: 1;
 }
 
-/* Small-screen adjustments: reduce paragraph spacing and scale headings */
+/* ----- Timeline note banner ----- */
+.timeline-note {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #666666;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ----- Responsive: tablet (max 900px) ----- */
+@media (max-width: 900px) {
+  .card {
+    flex: 1 1 calc(50% - 1rem);
+    max-width: none;
+  }
+}
+
+/* ----- Responsive: mobile (max 600px) ----- */
 @media (max-width: 600px) {
-	header .hero h1 {
-		font-size: 1.5rem;
-		margin: 0 0 0.5rem;
-	}
+  .hero h1 {
+    font-size: 1.4rem;
+  }
 
-	header .hero p {
-		margin: 0 0 0.75rem;
-		line-height: 1.3;
-	}
+  .hero p {
+    font-size: 0.95rem;
+  }
 
-	.card p,
-	.card .detail {
-		margin-bottom: 0.6rem;
-	}
+  .timeline-nav a {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.6rem;
+  }
 
-	/* Stack cards vertically on small screens */
-	.timeline {
-		flex-direction: column;
-		gap: 1rem;
-	}
+  .timeline {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 
-	.card {
-		flex: 1 1 100%;
-		min-width: 100%;
-	}
+  .card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 
-	.card img {
-		max-height: 300px;
-	}
+  .card img {
+    height: 200px;
+  }
 }
