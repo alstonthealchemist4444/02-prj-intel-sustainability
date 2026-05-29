@@ -82,7 +82,7 @@
           </div>
         </article>
 
-        <!-- Card 4: 1985 -->
+        <!-- Card 4: 1985 (custom image) -->
         <article class="card" id="year-1985">
           <img src="img/386-processor.jpg" alt="Intel 386 processor with 32-bit architecture introduced in 1985" />
           <div class="card-body">
@@ -117,9 +117,9 @@
           </div>
         </article>
 
-        <!-- Card 6: 2020 -->
+        <!-- Card 6: 2020 (custom image) -->
         <article class="card" id="year-2020">
-          <img src="img/2.jpg" alt="Intel's RISE strategy launch announcement targeting 2030 sustainability goals" />
+          <img src="img/2020-rise.jpg" alt="Intel's RISE strategy launch announcement targeting 2030 sustainability goals" />
           <div class="card-body">
             <span class="year">2020</span>
             <h2>RISE Strategy</h2>
@@ -135,9 +135,9 @@
           </div>
         </article>
 
-        <!-- Card 7: 2022 -->
+        <!-- Card 7: 2022 (custom image) -->
         <article class="card" id="year-2022">
-          <img src="img/3.jpg" alt="Intel's announcement of a net-zero greenhouse gas emissions commitment by 2040" />
+          <img src="img/2022-netzero.jpg" alt="Intel's announcement of a net-zero greenhouse gas emissions commitment by 2040" />
           <div class="card-body">
             <span class="year">2022</span>
             <h2>Net-Zero By 2040</h2>
@@ -203,7 +203,6 @@
     const nextBtn  = document.querySelector('.carousel-btn.next');
 
     function getScrollAmount() {
-      // Scroll by one card width + gap
       const card = carousel.querySelector('.card');
       return card ? card.offsetWidth + 24 : 320;
     }
@@ -216,7 +215,6 @@
       carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
 
-    // Show/hide arrows based on scroll position
     function updateButtons() {
       prevBtn.disabled = carousel.scrollLeft <= 0;
       nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1;
