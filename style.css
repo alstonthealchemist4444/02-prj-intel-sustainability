@@ -15,9 +15,49 @@ img {
 	display: block;
 }
 
+/* Timeline card images: make them fill the card width and never overflow */
+.card img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+/* Header/hero logo: constrain size and center it */
+header .hero img {
+	max-width: 220px;
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto 1rem;
+}
+
+/* Ensure hero content is centered */
+header .hero {
+	text-align: center;
+}
+
 /* Small polish: center the timeline note */
 .timeline-note {
 	text-align: center;
 	margin: 1.5rem 0;
 	color: #555;
+}
+
+/* Small-screen adjustments: reduce paragraph spacing and scale headings */
+@media (max-width: 600px) {
+	header .hero h1 {
+		font-size: 1.5rem;
+		margin: 0 0 0.5rem;
+	}
+
+	header .hero p {
+		margin: 0 0 0.75rem;
+		line-height: 1.3;
+	}
+
+	.card p,
+	.card .detail {
+		margin-bottom: 0.6rem;
+	}
 }
