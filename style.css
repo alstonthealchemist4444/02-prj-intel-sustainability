@@ -1,1 +1,23 @@
 /* Add your CSS here */
+
+/* Center main content and constrain max width on wide screens */
+body {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 1rem;
+	box-sizing: border-box;
+}
+
+/* Make images responsive so they fit the constrained layout */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Small polish: center the timeline note */
+.timeline-note {
+	text-align: center;
+	margin: 1.5rem 0;
+	color: #555;
+}
